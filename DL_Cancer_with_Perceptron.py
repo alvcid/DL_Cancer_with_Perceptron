@@ -1,5 +1,9 @@
 from sklearn.datasets import load_breast_cancer
 import pandas as pd
+from sklearn.model_selection import train_test_split
+import numpy as np
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import confusion_matrix
 
 # Cargar datos
 breast_cancer = load_breast_cancer()
@@ -18,17 +22,12 @@ df = pd.DataFrame(X, columns=breast_cancer.feature_names)
 # print(Y)
 
 # Dividir conjunto de datos
-from sklearn.model_selection import train_test_split
-
 X_train, X_test, y_train, y_test = train_test_split(df, Y, stratify=Y)
 
 print(f"Tamaño del conjunto de datos de entrenamiento: {len(X_train)}")
 print(f"Tamaño del conjunto de datos de prueba: {len(X_test)}")
 
 # Implementar la neurona MPNeuron más avanzada (Perceptrón)
-import numpy as np
-from sklearn.metrics import accuracy_score
-
 class MPNeuron:
     def __init__(self):
         self.threshold = None
@@ -76,6 +75,4 @@ print(Y_pred)
 print(accuracy_score(y_test, Y_pred))
 
 # Calculamos la matriz de confusión
-from sklearn.metrics import confusion_matrix
-
 print(confusion_matrix(y_test, Y_pred))
